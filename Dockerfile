@@ -1,7 +1,12 @@
 # el ubuntu
 FROM ubuntu:16.04
 RUN  apt-get update -y
-RUN apt-get install apache2 php7.0 libapache2-mod-php7.0 -y
+#para apache
+RUN apt-get install apache2 -y
+EXPOSE 80
 COPY --chown=www-data:www-data dokuwiki/ /var/www/html/
-RUN service apache2 start
+
+# para php
+Run apt-get install php libapache2-mod-php php-mcrypt -y
+ENTRYPOINT apache2ctl -D FOREGROUND
 
